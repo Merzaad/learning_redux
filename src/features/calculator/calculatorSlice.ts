@@ -56,10 +56,18 @@ export const calculatorSlice = createSlice({
       const y = action.payload;
       x.action = y;
     },
+    clearBoard: (state) => {
+      const x = state;
+      x.value = 0;
+      x.memory = [];
+      x.action = '';
+    },
   },
 });
 export const selectValue = (state: RootState) => state.calculator.value;
 export const selectMemory = (state: RootState) => state.calculator.memory;
 export const selectAction = (state: RootState) => state.calculator.action;
-export const { doAction, setMemory, setAction } = calculatorSlice.actions;
+export const {
+  doAction, setMemory, setAction, clearBoard,
+} = calculatorSlice.actions;
 export default calculatorSlice.reducer;
