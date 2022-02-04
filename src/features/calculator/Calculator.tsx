@@ -2,6 +2,7 @@
 /* eslint-disable import/extensions */
 
 import React from 'react';
+import { Button, ButtonGroup, Container } from '@mui/material';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
   setMemory, setAction, doAction, clearBoard,
@@ -15,7 +16,7 @@ function Calculator() {
   const action = useAppSelector(selectAction);
   const dispatch = useAppDispatch();
   return (
-    <div className="container w-25">
+    <Container>
       <div className="board">
         {value}
         <br />
@@ -23,31 +24,41 @@ function Calculator() {
         <br />
         {memory}
       </div>
-      <div className="container d-flex justify-content-between my-1">
-        <button type="button" className="btn btn-secondary btn-lg btn-lg" onClick={() => dispatch(setMemory('1'))}>1</button>
-        <button type="button" className="btn btn-secondary btn-lg btn-lg" onClick={() => dispatch(setMemory('2'))}>2</button>
-        <button type="button" className="btn btn-secondary btn-lg btn-lg" onClick={() => dispatch(setMemory('3'))}>3</button>
-        <button type="button" className="btn btn-warning btn-lg" onClick={() => dispatch(setAction('-'))}>-</button>
+      <div>
+        <Container>
+          <ButtonGroup color="secondary" aria-label="medium secondary button group">
+            <Button color="error" onClick={() => dispatch(setMemory('1'))}>1</Button>
+            <Button color="error" onClick={() => dispatch(setMemory('2'))}>3</Button>
+            <Button color="error" onClick={() => dispatch(setMemory('3'))}>2</Button>
+            <Button color="error" onClick={() => dispatch(setAction('+'))}>+</Button>
+          </ButtonGroup>
+        </Container>
+        <Container>
+          <ButtonGroup color="secondary" aria-label="medium secondary button group">
+            <Button color="error" onClick={() => dispatch(setMemory('4'))}>4</Button>
+            <Button color="error" onClick={() => dispatch(setMemory('5'))}>5</Button>
+            <Button color="error" onClick={() => dispatch(setMemory('6'))}>6</Button>
+            <Button color="error" onClick={() => dispatch(setAction('+'))}>+</Button>
+          </ButtonGroup>
+        </Container>
+        <Container>
+          <ButtonGroup color="secondary" aria-label="medium secondary button group">
+            <Button color="error" onClick={() => dispatch(setMemory('7'))}>4</Button>
+            <Button color="error" onClick={() => dispatch(setMemory('8'))}>5</Button>
+            <Button color="error" onClick={() => dispatch(setMemory('9'))}>6</Button>
+            <Button color="error" onClick={() => dispatch(setAction('*'))}>*</Button>
+          </ButtonGroup>
+        </Container>
+        <Container>
+          <ButtonGroup color="secondary" aria-label="medium secondary button group">
+            <Button color="error" onClick={() => dispatch(doAction(action))}>=</Button>
+            <Button color="error" onClick={() => dispatch(setMemory('0'))}>0</Button>
+            <Button color="error" onClick={() => dispatch(clearBoard())}>~</Button>
+            <Button color="error" onClick={() => dispatch(setAction('/'))}>/</Button>
+          </ButtonGroup>
+        </Container>
       </div>
-      <div className="container d-flex justify-content-between my-1">
-        <button type="button" className="btn btn-secondary btn-lg btn-lg" onClick={() => dispatch(setMemory('4'))}>4</button>
-        <button type="button" className="btn btn-secondary btn-lg" onClick={() => dispatch(setMemory('5'))}>5</button>
-        <button type="button" className="btn btn-secondary btn-lg" onClick={() => dispatch(setMemory('6'))}>6</button>
-        <button type="button" className="btn btn-warning btn-lg" onClick={() => dispatch(setAction('+'))}>+</button>
-      </div>
-      <div className="container d-flex justify-content-between my-1">
-        <button type="button" className="btn btn-secondary btn-lg" onClick={() => dispatch(setMemory('7'))}>7</button>
-        <button type="button" className="btn btn-secondary btn-lg" onClick={() => dispatch(setMemory('8'))}>8</button>
-        <button type="button" className="btn btn-secondary btn-lg" onClick={() => dispatch(setMemory('9'))}>9</button>
-        <button type="button" className="btn btn-warning btn-lg" onClick={() => dispatch(setAction('*'))}>*</button>
-      </div>
-      <div className="container d-flex justify-content-between my-1">
-        <button type="button" className="btn btn-danger btn-lg" onClick={() => dispatch(doAction(action))}>=</button>
-        <button type="button" className="btn btn-secondary btn-lg" onClick={() => dispatch(setMemory('0'))}>0</button>
-        <button type="button" className="btn btn-danger btn-lg" onClick={() => dispatch(clearBoard())}>~</button>
-        <button type="button" className="btn btn-warning btn-lg" onClick={() => dispatch(setAction('/'))}>/</button>
-      </div>
-    </div>
+    </Container>
   );
 }
 export default Calculator;
