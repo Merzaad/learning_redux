@@ -1,1 +1,2 @@
-/// <reference types="react-scripts" />
+/* eslint-disable linebreak-style */
+/// <reference types="react-scripts"/>

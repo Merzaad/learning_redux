@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 

@@ -1,7 +1,9 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import React from 'react';
 import logo from './logo.svg';
 
-import { Calculator } from './features/calculator/Calculator';
+import Calculator from './features/calculator/Calculator';
 import './App.css';
 
 function App() {

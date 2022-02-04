@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import React, { useState } from 'react';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
@@ -7,7 +9,7 @@ import {
   incrementByAmount,
   incrementAsync,
   incrementIfOdd,
-  selectCount,
+  selectCount
 } from './counterSlice';
 import styles from './Counter.module.css';
 
@@ -22,6 +24,7 @@ export default function Counter() {
     <div>
       <div className={styles.row}>
         <button
+          type="button"
           className={styles.button}
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
@@ -30,6 +33,7 @@ export default function Counter() {
         </button>
         <span className={styles.value}>{count}</span>
         <button
+          type="button"
           className={styles.button}
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
@@ -45,18 +49,21 @@ export default function Counter() {
           onChange={(e) => setIncrementAmount(e.target.value)}
         />
         <button
+          type="button"
           className={styles.button}
           onClick={() => dispatch(incrementByAmount(incrementValue))}
         >
           Add Amount
         </button>
         <button
+          type="button"
           className={styles.asyncButton}
           onClick={() => dispatch(incrementAsync(incrementValue))}
         >
           Add Async
         </button>
         <button
+          type="button"
           className={styles.button}
           onClick={() => dispatch(incrementIfOdd(incrementValue))}
         >
