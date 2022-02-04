@@ -30,7 +30,7 @@ function Calculator() {
             <Button color="error" onClick={() => dispatch(setMemory('1'))}>1</Button>
             <Button color="error" onClick={() => dispatch(setMemory('2'))}>3</Button>
             <Button color="error" onClick={() => dispatch(setMemory('3'))}>2</Button>
-            <Button color="error" onClick={() => dispatch(setAction('+'))}>+</Button>
+            <Button color="error" onClick={() => dispatch(setAction('-'))}>-</Button>
           </ButtonGroup>
         </Container>
         <Container>

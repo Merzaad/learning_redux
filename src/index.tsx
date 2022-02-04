@@ -15,8 +15,9 @@ import * as serviceWorker from './serviceWorker';
 function Nav() {
   return (
     <div>
-      <ul>
+      <ul style={{ display: 'flex', gap: '5px' }}>
         <Link to="/">home</Link>
+        <Link to="/app">App</Link>
       </ul>
       <Outlet />
     </div>
@@ -29,7 +30,8 @@ ReactDOM.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Nav />}>
-            <Route index element={<App />} />
+            <Route index element={<div />} />
+            <Route path="/app" element={<App />} />
           </Route>
         </Routes>
       </BrowserRouter>
