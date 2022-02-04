@@ -9,7 +9,7 @@ import {
   incrementByAmount,
   incrementAsync,
   incrementIfOdd,
-  selectCount
+  selectCount,
 } from './counterSlice';
 import styles from './Counter.module.css';
 
