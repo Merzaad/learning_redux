@@ -15,6 +15,13 @@ function Calculator() {
   const value = useAppSelector(selectValue);
   const action = useAppSelector(selectAction);
   const dispatch = useAppDispatch();
+  const test = (x:string) => {
+    if (memory.length > 0) {
+      dispatch(doAction(x));
+    } else {
+      dispatch(setAction(x));
+    }
+  };
   return (
     <Container>
       <div className="board">
@@ -28,9 +35,9 @@ function Calculator() {
         <Container>
           <ButtonGroup color="secondary" aria-label="medium secondary button group">
             <Button color="error" onClick={() => dispatch(setMemory('1'))}>1</Button>
-            <Button color="error" onClick={() => dispatch(setMemory('2'))}>3</Button>
-            <Button color="error" onClick={() => dispatch(setMemory('3'))}>2</Button>
-            <Button color="error" onClick={() => dispatch(setAction('-'))}>-</Button>
+            <Button color="error" onClick={() => dispatch(setMemory('2'))}>2</Button>
+            <Button color="error" onClick={() => dispatch(setMemory('3'))}>3</Button>
+            <Button color="error" onClick={() => test('-')}>-</Button>
           </ButtonGroup>
         </Container>
         <Container>
@@ -38,7 +45,7 @@ function Calculator() {
             <Button color="error" onClick={() => dispatch(setMemory('4'))}>4</Button>
             <Button color="error" onClick={() => dispatch(setMemory('5'))}>5</Button>
             <Button color="error" onClick={() => dispatch(setMemory('6'))}>6</Button>
-            <Button color="error" onClick={() => dispatch(setAction('+'))}>+</Button>
+            <Button color="error" onClick={() => test('+')}>+</Button>
           </ButtonGroup>
         </Container>
         <Container>
@@ -46,15 +53,15 @@ function Calculator() {
             <Button color="error" onClick={() => dispatch(setMemory('7'))}>4</Button>
             <Button color="error" onClick={() => dispatch(setMemory('8'))}>5</Button>
             <Button color="error" onClick={() => dispatch(setMemory('9'))}>6</Button>
-            <Button color="error" onClick={() => dispatch(setAction('*'))}>*</Button>
+            <Button color="error" onClick={() => test('*')}>*</Button>
           </ButtonGroup>
         </Container>
         <Container>
           <ButtonGroup color="secondary" aria-label="medium secondary button group">
             <Button color="error" onClick={() => dispatch(doAction(action))}>=</Button>
             <Button color="error" onClick={() => dispatch(setMemory('0'))}>0</Button>
-            <Button color="error" onClick={() => dispatch(clearBoard())}>~</Button>
-            <Button color="error" onClick={() => dispatch(setAction('/'))}>/</Button>
+            <Button color="error" onClick={() => dispatch(clearBoard())}>C</Button>
+            <Button color="error" onClick={() => test('/')}>/</Button>
           </ButtonGroup>
         </Container>
       </div>

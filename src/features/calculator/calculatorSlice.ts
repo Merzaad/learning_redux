@@ -43,7 +43,7 @@ export const calculatorSlice = createSlice({
           x.action = '';
           break;
         default:
-          alert('error reducer');
+          alert('choose an action');
       }
     },
     setMemory: (state, action: PayloadAction<string>) => {
