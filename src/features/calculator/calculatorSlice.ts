@@ -4,26 +4,62 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
 export interface CalculatorState {
-  value: string[];
+  value:number;
+  memory: string[];
+  action:string;
+
 }
 const initialState: CalculatorState = {
-  value: [],
+  value: 0,
+  action: '',
+  memory: [],
 };
 export const calculatorSlice = createSlice({
   name: 'calculator',
   initialState,
   reducers: {
-    increaseByValue: (state, action: PayloadAction<string>) => {
+    doAction: (state, action: PayloadAction<string>) => {
       const x = state;
       const y = action.payload;
-      x.value.push(y);
+      switch (y) {
+        case '+':
+          x.value += Number(x.memory.join(''));
+          x.memory = [];
+          x.action = '';
+          break;
+        case '-':
+          x.value -= Number(x.memory.join(''));
+          x.memory = [];
+          x.action = '';
+          break;
+        case '/':
+          x.value /= Number(x.memory.join(''));
+          x.memory = [];
+          x.action = '';
+          break;
+        case '*':
+          x.value *= Number(x.memory.join(''));
+          x.memory = [];
+          x.action = '';
+          break;
+        default:
+          alert('error reducer');
+      }
     },
-    pop: (state) => {
+    setMemory: (state, action: PayloadAction<string>) => {
       const x = state;
-      x.value.pop();
+      const y = action.payload;
+      x.memory.push(y);
+    },
+    setAction: (state, action: PayloadAction<string>) => {
+      const x = state;
+      const y = action.payload;
+      x.action = y;
     },
   },
 });
 export const selectValue = (state: RootState) => state.calculator.value;
-export const { increaseByValue, pop } = calculatorSlice.actions;
+export const selectMemory = (state: RootState) => state.calculator.memory;
+export const selectAction = (state: RootState) => state.calculator.action;
+export const { doAction, setMemory, setAction } = calculatorSlice.actions;
 export default calculatorSlice.reducer;
