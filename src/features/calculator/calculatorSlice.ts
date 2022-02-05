@@ -15,7 +15,7 @@ const initialState: CalculatorState = {
   action: '',
   memory: [],
   lastMove: '',
-  color: 'success',
+  color: 'black',
 }
 export const calculatorSlice = createSlice({
   name: 'calculator',
@@ -93,6 +93,12 @@ export const selectAction = (state: RootState) => state.calculator.action
 export const selectLastmove = (state: RootState) => state.calculator.lastMove
 export const selectColor = (state: RootState) => state.calculator.color
 export const {
-  doAction, setMemory, setAction, clearBoard, clearMemory, setLastmove,
+  doAction,
+  setMemory,
+  setAction,
+  clearBoard,
+  clearMemory,
+  setLastmove,
+  setColor,
 } = calculatorSlice.actions
 export default calculatorSlice.reducer
