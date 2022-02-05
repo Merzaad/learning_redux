@@ -1,9 +1,9 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import React from 'react';
+import React from 'react'
 
-import Calculator from './features/calculator/Calculator';
-import './App.css';
+import Calculator from './features/calculator/Calculator'
+import './App.css'
 
 function App() {
   return (
@@ -12,6 +12,6 @@ function App() {
         <Calculator />
       </header>
     </div>
-  );
+  )
 }
-export default App;
+export default App

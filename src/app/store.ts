@@ -1,8 +1,8 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
-import calculatorReducer from '../features/calculator/calculatorSlice';
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
+import counterReducer from '../features/counter/counterSlice'
+import calculatorReducer from '../features/calculator/calculatorSlice'
 
 export const store = configureStore({
   reducer: {
@@ -10,7 +10,7 @@ export const store = configureStore({
     calculator: calculatorReducer,
 
   },
-});
+})
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

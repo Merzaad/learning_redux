@@ -1,8 +1,8 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../../app/store';
-import { fetchCount } from './counterAPI';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { RootState, AppThunk } from '../../app/store'
+import { fetchCount } from './counterAPI'
 
 export interface CounterState {
   value: number;
@@ -12,7 +12,7 @@ export interface CounterState {
 const initialState: CounterState = {
   value: 0,
   status: 'idle',
-};
+}
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -22,11 +22,11 @@ const initialState: CounterState = {
 export const incrementAsync = createAsyncThunk(
   'counter/fetchCount',
   async (amount: number) => {
-    const response = await fetchCount(amount);
+    const response = await fetchCount(amount)
     // The value we return becomes the `fulfilled` action payload
-    return response.data;
+    return response.data
   },
-);
+)
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -38,17 +38,17 @@ export const counterSlice = createSlice({
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      const x = state;
-      x.value += 1;
+      const x = state
+      x.value += 1
     },
     decrement: (state) => {
-      const x = state;
-      x.value -= 1;
+      const x = state
+      x.value -= 1
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
     incrementByAmount: (state, action: PayloadAction<number>) => {
-      const x = state;
-      x.value += action.payload;
+      const x = state
+      x.value += action.payload
     },
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -56,23 +56,23 @@ export const counterSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(incrementAsync.pending, (state) => {
-        const x = state;
-        x.status = 'loading';
+        const x = state
+        x.status = 'loading'
       })
       .addCase(incrementAsync.fulfilled, (state, action) => {
-        const x = state;
-        x.status = 'idle';
-        x.value += action.payload;
-      });
+        const x = state
+        x.status = 'idle'
+        x.value += action.payload
+      })
   },
-});
+})
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount } = counterSlice.actions
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectCount = (state: RootState) => state.counter.value;
+export const selectCount = (state: RootState) => state.counter.value
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
@@ -80,10 +80,10 @@ export const incrementIfOdd = (amount: number): AppThunk => (
   dispatch,
   getState,
 ) => {
-  const currentValue = selectCount(getState());
+  const currentValue = selectCount(getState())
   if (currentValue % 2 === 1) {
-    dispatch(incrementByAmount(amount));
+    dispatch(incrementByAmount(amount))
   }
-};
+}
 
-export default counterSlice.reducer;
+export default counterSlice.reducer

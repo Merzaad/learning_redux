@@ -1,28 +1,32 @@
 /* eslint-disable import/no-unresolved */
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import { Outlet, Link } from 'react-router-dom';
+import * as React from 'react'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import Menu from '@mui/material/Menu'
+import MenuIcon from '@mui/icons-material/Menu'
+import Container from '@mui/material/Container'
+import Button from '@mui/material/Button'
+import MenuItem from '@mui/material/MenuItem'
+import { Outlet, Link } from 'react-router-dom'
 
-const pages = [['Home', ''], ['App', 'app'], ['Setting', '']];
+const pages = [
+  ['Home', ''],
+  ['App', 'app'],
+  ['Setting', ''],
+]
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const handleOpenNavMenu = (event:any) => {
-    setAnchorElNav(event.currentTarget);
-  };
+  const [anchorElNav, setAnchorElNav] = React.useState(null)
+  const handleOpenNavMenu = (event: any) => {
+    setAnchorElNav(event.currentTarget)
+  }
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+    setAnchorElNav(null)
+  }
 
   return (
     <div>
@@ -84,21 +88,25 @@ function ResponsiveAppBar() {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
-                <Button
-                  key={page[0]}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                <Link
+                  style={{ textDecoration: 'none', color: 'white' }}
+                  to={`/${page[1]}`}
                 >
-                  <Link style={{ textDecoration: 'none', color: 'white' }} to={`/${page[1]}`}>{page[0]}</Link>
-                </Button>
+                  <Button
+                    key={page[0]}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 0, color: 'white', display: 'block' }}
+                  >
+                    {page[0]}
+                  </Button>
+                </Link>
               ))}
             </Box>
-
           </Toolbar>
         </Container>
       </AppBar>
       <Outlet />
     </div>
-  );
+  )
 }
-export default ResponsiveAppBar;
+export default ResponsiveAppBar

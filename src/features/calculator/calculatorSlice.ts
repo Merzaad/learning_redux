@@ -1,78 +1,82 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { RootState } from '../../app/store'
 
 export interface CalculatorState {
-  value: number;
-  memory: string[];
-  action: string;
+  value: number
+  memory: string[]
+  action: string
 }
 const initialState: CalculatorState = {
   value: 0,
   action: '',
   memory: [],
-};
+}
 export const calculatorSlice = createSlice({
   name: 'calculator',
   initialState,
   reducers: {
     doAction: (state, action: PayloadAction<string>) => {
-      const x = state;
-      const y = action.payload;
+      const x = state
+      const y = action.payload
       switch (y) {
         case '+':
-          x.value += Number(x.memory.join(''));
-          x.memory = [];
-          x.action = '';
-          break;
+          x.value += Number(x.memory.join(''))
+          x.memory = []
+          x.action = ''
+          break
         case '-':
-          x.value -= Number(x.memory.join(''));
-          x.memory = [];
-          x.action = '';
-          break;
+          x.value -= Number(x.memory.join(''))
+          x.memory = []
+          x.action = ''
+          break
         case '/':
           if (x.memory[0] === '0') {
-            alert('division by zero');
-            x.memory = [];
-            break;
+            alert('division by zero')
+            x.memory = []
+            break
           } else {
-            x.value /= Number(x.memory.join(''));
-            x.memory = [];
-            x.action = '';
-            break;
+            x.value /= Number(x.memory.join(''))
+            x.memory = []
+            x.action = ''
+            break
           }
         case '*':
-          x.value *= Number(x.memory.join(''));
-          x.memory = [];
-          x.action = '';
-          break;
+          x.value *= Number(x.memory.join(''))
+          x.memory = []
+          x.action = ''
+          break
         default:
-          alert('choose an action');
+          alert('choose an action')
       }
     },
     setMemory: (state, action: PayloadAction<string>) => {
-      const x = state;
-      const y = action.payload;
-      if (x.memory.length < 20) x.memory.push(y);
+      const x = state
+      const y = action.payload
+      if (x.memory.length < 20) x.memory.push(y)
     },
     setAction: (state, action: PayloadAction<string>) => {
-      const x = state;
-      const y = action.payload;
-      x.action = y;
+      const x = state
+      const y = action.payload
+      x.action = y
     },
     clearBoard: (state) => {
-      const x = state;
-      x.value = 0;
-      x.memory = [];
-      x.action = '';
+      const x = state
+      x.value = 0
+      x.memory = []
+      x.action = ''
+    },
+    clearMemory: (state) => {
+      const x = state
+      x.memory = []
     },
   },
-});
-export const selectValue = (state: RootState) => state.calculator.value;
-export const selectMemory = (state: RootState) => state.calculator.memory;
-export const selectAction = (state: RootState) => state.calculator.action;
+})
+export const selectValue = (state: RootState) => state.calculator.value
+export const selectMemory = (state: RootState) => state.calculator.memory
+export const selectAction = (state: RootState) => state.calculator.action
 export const {
-  doAction, setMemory, setAction, clearBoard,
-} = calculatorSlice.actions;
-export default calculatorSlice.reducer;
+  doAction, setMemory, setAction, clearBoard, clearMemory,
+} = calculatorSlice.actions
+export default calculatorSlice.reducer
