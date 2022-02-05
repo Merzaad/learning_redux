@@ -7,7 +7,7 @@ function CalculatorSetting() {
   return (
     <div className="calculatorSetting">
       <div>
-        <ToggleButtonGroup onChange={() => console.log('test')}>
+        <ToggleButtonGroup>
           <ToggleButton value="Primary">Primary</ToggleButton>
           <ToggleButton value="Secondary">Secondary</ToggleButton>
           <ToggleButton value="Success">Success</ToggleButton>

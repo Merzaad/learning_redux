@@ -12,7 +12,6 @@ import {
   clearMemory,
   selectLastmove,
   setLastmove,
-  selectColor,
 } from '../calculator/calculatorSlice'
 import { selectValue, selectMemory, selectAction } from './calculatorSlice'
 import './calculator.css'
@@ -22,12 +21,14 @@ function Calculator() {
   const value = useAppSelector(selectValue)
   const action = useAppSelector(selectAction)
   const lastMove = useAppSelector(selectLastmove)
-  const bColor = useAppSelector(selectColor)
-  console.log(bColor)
   const dispatch = useAppDispatch()
   const bugAction = (x: string) => {
     if (memory.length > 0 && action.length > 0) {
       dispatch(doAction(action))
+      dispatch(setAction(x))
+      dispatch(clearMemory())
+    } else if (value === 0 && !lastMove) {
+      dispatch(doAction('+'))
       dispatch(setAction(x))
       dispatch(clearMemory())
     } else if (memory.length > 0 && !action) {
@@ -93,7 +94,9 @@ function Calculator() {
           <Button
             variant="outlined"
             color="success"
-            onClick={() => (memory.length > 0 ? dispatch(doAction(action)) : dispatch(setLastmove('empty memory')))}
+            onClick={
+              () => (memory.length > 0 ? dispatch(doAction(action)) : dispatch(setLastmove('empty memory')))
+            }
           >
             =
           </Button>
