@@ -15,7 +15,7 @@ const initialState: CalculatorState = {
   action: '',
   memory: [],
   lastMove: '',
-  color: 'black',
+  color: 'mediumspringgreen',
 }
 export const calculatorSlice = createSlice({
   name: 'calculator',
@@ -53,7 +53,7 @@ export const calculatorSlice = createSlice({
           x.memory = []
           break
         default:
-          x.lastMove = 'no action'
+          x.lastMove = 'empty action'
       }
     },
     setMemory: (state, action: PayloadAction<string>) => {

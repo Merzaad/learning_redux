@@ -12,8 +12,8 @@ function CalculatorSetting() {
     <Button key="one" onClick={() => dispatch(setColor('rgb(0, 255, 255)'))}>
       blue
     </Button>,
-    <Button key="two" onClick={() => dispatch(setColor('black'))}>
-      black
+    <Button key="two" onClick={() => dispatch(setColor('rgb(255, 10, 60)'))}>
+      red
     </Button>,
     <Button key="three" onClick={() => dispatch(setColor('mediumspringgreen'))}>
       green
