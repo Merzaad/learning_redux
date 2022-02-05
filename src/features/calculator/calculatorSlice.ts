@@ -8,12 +8,14 @@ export interface CalculatorState {
   memory: string[]
   action: string
   lastMove: string
+  color: string
 }
 const initialState: CalculatorState = {
   value: 0,
   action: '',
   memory: [],
   lastMove: '',
+  color: 'success',
 }
 export const calculatorSlice = createSlice({
   name: 'calculator',
@@ -26,32 +28,32 @@ export const calculatorSlice = createSlice({
       switch (y) {
         case '+':
           x.value += Number(x.memory.join(''))
-          x.memory = []
           x.action = ''
+          x.memory = []
           break
         case '-':
           x.value -= Number(x.memory.join(''))
-          x.memory = []
           x.action = ''
+          x.memory = []
           break
         case '/':
           if (x.memory[0] === '0') {
-            alert('division by zero')
+            x.lastMove = ' /0 not allowd'
             x.memory = []
             break
           } else {
             x.value /= Number(x.memory.join(''))
-            x.memory = []
             x.action = ''
+            x.memory = []
             break
           }
         case '*':
           x.value *= Number(x.memory.join(''))
-          x.memory = []
           x.action = ''
+          x.memory = []
           break
         default:
-          alert('choose an action')
+          x.lastMove = 'no action'
       }
     },
     setMemory: (state, action: PayloadAction<string>) => {
@@ -69,10 +71,19 @@ export const calculatorSlice = createSlice({
       x.value = 0
       x.memory = []
       x.action = ''
+      x.lastMove = ''
     },
     clearMemory: (state) => {
       const x = state
       x.memory = []
+    },
+    setLastmove: (state, action: PayloadAction<string>) => {
+      const x = state
+      x.lastMove = action.payload
+    },
+    setColor: (state, action: PayloadAction<string>) => {
+      const x = state
+      x.color = action.payload
     },
   },
 })
@@ -80,7 +91,8 @@ export const selectValue = (state: RootState) => state.calculator.value
 export const selectMemory = (state: RootState) => state.calculator.memory
 export const selectAction = (state: RootState) => state.calculator.action
 export const selectLastmove = (state: RootState) => state.calculator.lastMove
+export const selectColor = (state: RootState) => state.calculator.color
 export const {
-  doAction, setMemory, setAction, clearBoard, clearMemory,
+  doAction, setMemory, setAction, clearBoard, clearMemory, setLastmove,
 } = calculatorSlice.actions
 export default calculatorSlice.reducer
