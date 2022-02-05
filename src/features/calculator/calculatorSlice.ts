@@ -4,10 +4,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
 export interface CalculatorState {
-  value:number;
+  value: number;
   memory: string[];
-  action:string;
-
+  action: string;
 }
 const initialState: CalculatorState = {
   value: 0,
@@ -33,10 +32,19 @@ export const calculatorSlice = createSlice({
           x.action = '';
           break;
         case '/':
-          x.value /= Number(x.memory.join(''));
-          x.memory = [];
-          x.action = '';
-          break;
+          if (x.memory[0] === '0') {
+            alert('division by zero');
+            x.memory = [];
+            break;
+          } else if (x.memory.length === 0) {
+            alert('empty memory');
+            break;
+          } else {
+            x.value /= Number(x.memory.join(''));
+            x.memory = [];
+            x.action = '';
+            break;
+          }
         case '*':
           x.value *= Number(x.memory.join(''));
           x.memory = [];
@@ -49,7 +57,7 @@ export const calculatorSlice = createSlice({
     setMemory: (state, action: PayloadAction<string>) => {
       const x = state;
       const y = action.payload;
-      x.memory.push(y);
+      if (x.memory.length < 20) x.memory.push(y);
     },
     setAction: (state, action: PayloadAction<string>) => {
       const x = state;

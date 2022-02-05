@@ -35,7 +35,7 @@ function Calculator() {
       </div>
       <div>
         <Container>
-          <ButtonGroup size="large" aria-label="large  button group">
+          <ButtonGroup size="large">
             <Button color="success" onClick={() => dispatch(setMemory('1'))}>
               1
             </Button>
@@ -51,7 +51,7 @@ function Calculator() {
           </ButtonGroup>
         </Container>
         <Container>
-          <ButtonGroup size="large" aria-label="large  button group">
+          <ButtonGroup size="large">
             <Button color="success" onClick={() => dispatch(setMemory('4'))}>
               4
             </Button>
@@ -67,7 +67,7 @@ function Calculator() {
           </ButtonGroup>
         </Container>
         <Container>
-          <ButtonGroup size="large" aria-label="large  button group">
+          <ButtonGroup size="large">
             <Button color="success" onClick={() => dispatch(setMemory('7'))}>
               4
             </Button>
@@ -75,7 +75,7 @@ function Calculator() {
               5
             </Button>
             <Button color="success" onClick={() => dispatch(setMemory('9'))}>
-              6
+              9
             </Button>
             <Button color="success" onClick={() => bugAction('*')}>
               *
@@ -83,7 +83,7 @@ function Calculator() {
           </ButtonGroup>
         </Container>
         <Container>
-          <ButtonGroup size="large" aria-label="large  button group">
+          <ButtonGroup size="large">
             <Button color="success" onClick={() => dispatch(doAction(action))}>
               =
             </Button>

@@ -1,20 +1,20 @@
-body{
-    background-color:white;
+body {
+  background-color: white;
 }
-.board{
-    background-color:rgba(0, 0, 0, 0.7);
-    color:mediumspringgreen;
-    text-shadow: 0px 0px 5px mediumspringgreen;
-    border-radius:10px;
-    height: 80px;
-    margin: auto;
-    margin-bottom: 10px;
-    padding: 10px;
-    width:200px;
+.board {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: mediumspringgreen;
+  text-shadow: 0px 0px 5px mediumspringgreen;
+  border-radius: 10px;
+  height: 80px;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 200px;
 }
-#test{
-    border-radius:10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.411);
-    padding:20px;
-    max-width: 300px;
+#test {
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.411);
+  padding: 20px;
+  max-width: 300px;
 }
