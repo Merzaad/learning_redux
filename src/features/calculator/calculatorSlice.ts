@@ -7,11 +7,13 @@ export interface CalculatorState {
   value: number
   memory: string[]
   action: string
+  lastMove: string
 }
 const initialState: CalculatorState = {
   value: 0,
   action: '',
   memory: [],
+  lastMove: '',
 }
 export const calculatorSlice = createSlice({
   name: 'calculator',
@@ -20,6 +22,7 @@ export const calculatorSlice = createSlice({
     doAction: (state, action: PayloadAction<string>) => {
       const x = state
       const y = action.payload
+      x.lastMove = x.value + y + Number(x.memory.join(''))
       switch (y) {
         case '+':
           x.value += Number(x.memory.join(''))
@@ -76,6 +79,7 @@ export const calculatorSlice = createSlice({
 export const selectValue = (state: RootState) => state.calculator.value
 export const selectMemory = (state: RootState) => state.calculator.memory
 export const selectAction = (state: RootState) => state.calculator.action
+export const selectLastmove = (state: RootState) => state.calculator.lastMove
 export const {
   doAction, setMemory, setAction, clearBoard, clearMemory,
 } = calculatorSlice.actions

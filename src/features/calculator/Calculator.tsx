@@ -10,6 +10,7 @@ import {
   doAction,
   clearBoard,
   clearMemory,
+  selectLastmove,
 } from '../calculator/calculatorSlice'
 import { selectValue, selectMemory, selectAction } from './calculatorSlice'
 import './calculator.css'
@@ -18,6 +19,7 @@ function Calculator() {
   const memory = useAppSelector(selectMemory)
   const value = useAppSelector(selectValue)
   const action = useAppSelector(selectAction)
+  const lastMove = useAppSelector(selectLastmove)
   const dispatch = useAppDispatch()
   const bugAction = (x: string) => {
     if (memory.length > 0 && action.length > 0) {
@@ -32,6 +34,8 @@ function Calculator() {
   return (
     <Container id="test">
       <div ref={test} className="board">
+        <h3 style={{ height: '20px' }}>{lastMove}</h3>
+        <hr />
         {value}
         <br />
         {action}
