@@ -36,9 +36,6 @@ export const calculatorSlice = createSlice({
             alert('division by zero');
             x.memory = [];
             break;
-          } else if (x.memory.length === 0) {
-            alert('empty memory');
-            break;
           } else {
             x.value /= Number(x.memory.join(''));
             x.memory = [];

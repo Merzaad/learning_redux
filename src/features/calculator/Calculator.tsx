@@ -2,7 +2,7 @@
 /* eslint-disable import/extensions */
 
 import React, { useRef } from 'react';
-import { Button, ButtonGroup, Container } from '@mui/material';
+import { Button, Container } from '@mui/material';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
   setMemory,
@@ -35,68 +35,66 @@ function Calculator() {
       </div>
       <div>
         <Container>
-          <ButtonGroup size="large">
-            <Button color="success" onClick={() => dispatch(setMemory('1'))}>
-              1
-            </Button>
-            <Button color="success" onClick={() => dispatch(setMemory('2'))}>
-              2
-            </Button>
-            <Button color="success" onClick={() => dispatch(setMemory('3'))}>
-              3
-            </Button>
-            <Button color="success" onClick={() => bugAction('-')}>
-              -
-            </Button>
-          </ButtonGroup>
+          <Button variant="outlined" color="success" onClick={() => dispatch(setMemory('1'))}>
+            1
+          </Button>
+          <Button variant="outlined" color="success" onClick={() => dispatch(setMemory('2'))}>
+            2
+          </Button>
+          <Button variant="outlined" color="success" onClick={() => dispatch(setMemory('3'))}>
+            3
+          </Button>
+          <Button variant="outlined" color="success" onClick={() => bugAction('-')}>
+            -
+          </Button>
         </Container>
         <Container>
-          <ButtonGroup size="large">
-            <Button color="success" onClick={() => dispatch(setMemory('4'))}>
-              4
-            </Button>
-            <Button color="success" onClick={() => dispatch(setMemory('5'))}>
-              5
-            </Button>
-            <Button color="success" onClick={() => dispatch(setMemory('6'))}>
-              6
-            </Button>
-            <Button color="success" onClick={() => bugAction('+')}>
-              +
-            </Button>
-          </ButtonGroup>
+          <Button variant="outlined" color="success" onClick={() => dispatch(setMemory('4'))}>
+            4
+          </Button>
+          <Button variant="outlined" color="success" onClick={() => dispatch(setMemory('5'))}>
+            5
+          </Button>
+          <Button variant="outlined" color="success" onClick={() => dispatch(setMemory('6'))}>
+            6
+          </Button>
+          <Button variant="outlined" color="success" onClick={() => bugAction('+')}>
+            +
+          </Button>
         </Container>
         <Container>
-          <ButtonGroup size="large">
-            <Button color="success" onClick={() => dispatch(setMemory('7'))}>
-              4
-            </Button>
-            <Button color="success" onClick={() => dispatch(setMemory('8'))}>
-              5
-            </Button>
-            <Button color="success" onClick={() => dispatch(setMemory('9'))}>
-              9
-            </Button>
-            <Button color="success" onClick={() => bugAction('*')}>
-              *
-            </Button>
-          </ButtonGroup>
+          <Button variant="outlined" color="success" onClick={() => dispatch(setMemory('7'))}>
+            4
+          </Button>
+          <Button variant="outlined" color="success" onClick={() => dispatch(setMemory('8'))}>
+            5
+          </Button>
+          <Button variant="outlined" color="success" onClick={() => dispatch(setMemory('9'))}>
+            9
+          </Button>
+          <Button variant="outlined" color="success" onClick={() => bugAction('*')}>
+            *
+          </Button>
         </Container>
         <Container>
-          <ButtonGroup size="large">
-            <Button color="success" onClick={() => dispatch(doAction(action))}>
-              =
-            </Button>
-            <Button color="success" onClick={() => dispatch(setMemory('0'))}>
-              0
-            </Button>
-            <Button color="success" onClick={() => dispatch(clearBoard())}>
-              C
-            </Button>
-            <Button color="success" onClick={() => bugAction('/')}>
-              /
-            </Button>
-          </ButtonGroup>
+          <Button
+            variant="outlined"
+            color="success"
+            onClick={
+             () => (memory.length > 0 ? dispatch(doAction(action)) : alert('empty memory'))
+            }
+          >
+            =
+          </Button>
+          <Button variant="outlined" color="success" onClick={() => dispatch(setMemory('0'))}>
+            0
+          </Button>
+          <Button variant="outlined" color="success" onClick={() => dispatch(clearBoard())}>
+            C
+          </Button>
+          <Button variant="outlined" color="success" onClick={() => bugAction('/')}>
+            /
+          </Button>
         </Container>
       </div>
     </Container>
