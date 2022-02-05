@@ -29,7 +29,6 @@ function Calculator() {
     } else dispatch(setAction(x))
   }
   const test: any = useRef('initial')
-  console.log(test.current)
   return (
     <Container id="test">
       <div ref={test} className="board">

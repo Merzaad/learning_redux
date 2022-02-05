@@ -12,10 +12,10 @@ import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 import { Outlet, Link } from 'react-router-dom'
 
-const pages = [
-  ['Home', ''],
-  ['App', 'app'],
-  ['Setting', ''],
+const pages:any[] = [
+  ['Home', '/', 0],
+  ['App', '/app', 1],
+  ['Setting', '/', 2],
 ]
 
 function ResponsiveAppBar() {
@@ -73,7 +73,13 @@ function ResponsiveAppBar() {
               >
                 {pages.map((page) => (
                   <MenuItem key={page[0]} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page[0]}</Typography>
+                    <Link
+                      key={page[2]}
+                      style={{ textDecoration: 'none', color: 'black' }}
+                      to={page[1]}
+                    >
+                      <Typography textAlign="center">{page[0]}</Typography>
+                    </Link>
                   </MenuItem>
                 ))}
               </Menu>
@@ -89,8 +95,9 @@ function ResponsiveAppBar() {
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
                 <Link
+                  key={page[2]}
                   style={{ textDecoration: 'none', color: 'white' }}
-                  to={`/${page[1]}`}
+                  to={page[1]}
                 >
                   <Button
                     key={page[0]}
