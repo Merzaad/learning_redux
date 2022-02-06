@@ -31,7 +31,7 @@ function Calculator() {
   const bugAction = (x: string) => {
     if (memory.length > 0 && action.length > 0) {
       dispatch(doAction(action))
-      dispatch(setAction(''))
+      dispatch(setAction(x))
       dispatch(clearMemory())
     } else if (!lastMove) {
       dispatch(doAction('+'))
@@ -152,7 +152,7 @@ function Calculator() {
           <Button
             sx={{ color: `${color}` }}
             variant="text"
-            onClick={() => bugAction(action)}
+            onClick={() => bugAction('')}
           >
             =
           </Button>

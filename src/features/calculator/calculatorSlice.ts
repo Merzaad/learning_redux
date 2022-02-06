@@ -15,8 +15,10 @@ const initialState: CalculatorState = {
   action: '',
   memory: [],
   lastMove: '',
-  color: localStorage.getItem('color')
-  == null ? 'mediumspringgreen' : String(localStorage.getItem('color')),
+  color:
+    localStorage.getItem('color') == null
+      ? 'mediumspringgreen'
+      : String(localStorage.getItem('color')),
 }
 export const calculatorSlice = createSlice({
   name: 'calculator',
@@ -98,7 +100,8 @@ export const calculatorSlice = createSlice({
     },
     backspace: (state) => {
       const x = state
-      x.memory.pop()
+      if (x.memory.length > 0) x.memory.pop()
+      else x.action = ''
     },
     setStorage: (state) => {
       const x = state
