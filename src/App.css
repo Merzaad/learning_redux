@@ -1,7 +1,10 @@
 .App {
   text-align: center;
+  background-color: rgb(70, 70, 70);
+  background-image: url('../public/bg.jpg');
+  background-repeat: repeat;
+  background-size: 600px;
 }
-
 .App-header {
   min-height: 90vh;
   display: flex;
@@ -10,8 +13,4 @@
   justify-content: center;
 }
 @media screen and (max-width: 1000px) {
-  .App {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
 }

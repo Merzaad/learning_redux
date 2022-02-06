@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import App from './App'
 import { store } from './app/store'
 import Nav from './Nav'
+import Home from './Home'
 import CalculatorSetting from './features/calculator/CalculatorSetting'
 
 ReactDOM.render(
@@ -16,7 +17,7 @@ ReactDOM.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Nav />}>
-            <Route index element={<div />} />
+            <Route index element={<Home />} />
             <Route path="/app" element={<App />} />
             <Route path="/setting" element={<CalculatorSetting />} />
             <Route path="*" element={<div>404</div>} />

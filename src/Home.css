@@ -1,0 +1,33 @@
+.home {
+  background: rgb(0, 255, 142);
+  background: linear-gradient(
+    90deg,
+    rgba(57, 184, 124, 0.753) 0%,
+    rgb(50, 113, 124) 100%
+  );
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  align-items: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.411);
+  max-width: 400px;
+  margin: auto;
+  margin-top: 200px;
+  min-height: 200px;
+}
+#home {
+  color: rgb(25, 255, 159);
+  text-shadow: 0px 0px 10px rgb(25, 255, 159);
+  text-decoration: none;
+  display: block;
+  font-size: 50px;
+}
+@media screen and (max-width: 1000px) {
+  .home {
+    margin-top: 0px;
+    height: 100vh;
+    max-width: 100%;
+    border-radius: 0px;
+  }
+}
