@@ -11,12 +11,12 @@ import {
   clearBoard,
   clearMemory,
   selectLastmove,
-  setLastmove,
   floor,
   backspace,
   setStorage,
   getStorage,
   selectColor,
+  setLastmove,
 } from '../calculator/calculatorSlice'
 import { selectValue, selectMemory, selectAction } from './calculatorSlice'
 import './calculator.css'
@@ -33,13 +33,19 @@ function Calculator() {
       dispatch(doAction(action))
       dispatch(setAction(x))
       dispatch(clearMemory())
-    } else if (value === 0 && !lastMove) {
+    } else if (!lastMove) {
       dispatch(doAction('+'))
       dispatch(setAction(x))
       dispatch(clearMemory())
-    } else if (memory.length > 0 && !action) {
+    } else if (memory.length === 0 && action.length === 0) {
+      dispatch(setAction(x))
+    } else if (memory.length === 0 && action.length > 0) {
+      dispatch(setAction(x))
+    } else if (memory.length > 0 && action.length === 0) {
       dispatch(doAction(x))
-    } else dispatch(setAction(x))
+    } else {
+      dispatch(setLastmove('bugAction else'))
+    }
   }
   const test: any = useRef('initial')
   return (
@@ -146,9 +152,7 @@ function Calculator() {
           <Button
             sx={{ color: `${color}` }}
             variant="text"
-            onClick={() => (memory.length > 0
-              ? dispatch(doAction(action))
-              : dispatch(setLastmove('empty memory')))}
+            onClick={() => bugAction(action)}
           >
             =
           </Button>
