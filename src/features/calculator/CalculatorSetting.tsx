@@ -3,8 +3,8 @@
 import React from 'react'
 import './calculator.css'
 import { Button, ButtonGroup } from '@mui/material'
-import { setColor } from '../calculator/calculatorSlice'
-import { useAppDispatch } from '../../app/hooks'
+import { setColor, selectColor } from '../calculator/calculatorSlice'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 
 function CalculatorSetting() {
   const dispatch = useAppDispatch()
@@ -22,7 +22,13 @@ function CalculatorSetting() {
   return (
     <div className="calculatorSetting">
       <div>
-        <ButtonGroup color="error" size="large" aria-label="small button group">
+        <ButtonGroup
+          variant="outlined"
+          color="inherit"
+          sx={{ color: useAppSelector(selectColor) }}
+          size="large"
+          aria-label="small button group"
+        >
           {buttons}
         </ButtonGroup>
       </div>

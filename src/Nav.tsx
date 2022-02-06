@@ -90,11 +90,15 @@ function ResponsiveAppBar() {
               component="div"
               sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
             >
-              LOGO
+              Calculator
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
-                <Link key={page[2]} style={{ textDecoration: 'none', color: 'white' }} to={page[1]}>
+                <Link
+                  key={page[2]}
+                  style={{ textDecoration: 'none', color: 'white' }}
+                  to={page[1]}
+                >
                   <Button
                     key={page[0]}
                     onClick={handleCloseNavMenu}
