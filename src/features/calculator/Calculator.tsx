@@ -13,6 +13,8 @@ import {
   selectLastmove,
   setLastmove,
   selectColor,
+  floor,
+  backspace,
 } from '../calculator/calculatorSlice'
 import { selectValue, selectMemory, selectAction } from './calculatorSlice'
 import './calculator.css'
@@ -168,6 +170,36 @@ function Calculator() {
             onClick={() => bugAction('/')}
           >
             /
+          </Button>
+        </Container>
+        <Container>
+          <Button
+            sx={{ color: `${color}` }}
+            variant="text"
+            onClick={() => dispatch(backspace())}
+          >
+            DEL
+          </Button>
+          <Button
+            sx={{ color: `${color}` }}
+            variant="text"
+            onClick={() => dispatch(floor())}
+          >
+            FLOOR
+          </Button>
+          <Button
+            sx={{ color: `${color}` }}
+            variant="text"
+            onClick={() => null}
+          >
+            m
+          </Button>
+          <Button
+            sx={{ color: `${color}` }}
+            variant="text"
+            onClick={() => null}
+          >
+            gm
           </Button>
         </Container>
       </div>
