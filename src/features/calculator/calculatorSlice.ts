@@ -24,36 +24,41 @@ export const calculatorSlice = createSlice({
     doAction: (state, action: PayloadAction<string>) => {
       const x = state
       const y = action.payload
-      x.lastMove = x.value + y + Number(x.memory.join(''))
-      switch (y) {
-        case '+':
-          x.value += Number(x.memory.join(''))
-          x.action = ''
-          x.memory = []
-          break
-        case '-':
-          x.value -= Number(x.memory.join(''))
-          x.action = ''
-          x.memory = []
-          break
-        case '/':
-          if (x.memory[0] === '0') {
-            x.lastMove = ' /0 not allowd'
-            x.memory = []
-            break
-          } else {
-            x.value /= Number(x.memory.join(''))
+      const z = Number(x.memory.join(''))
+      x.lastMove = x.value + y + z
+      if (!Number.isNaN(z)) {
+        switch (y) {
+          case '+':
+            x.value += Number(x.memory.join(''))
             x.action = ''
             x.memory = []
             break
-          }
-        case '*':
-          x.value *= Number(x.memory.join(''))
-          x.action = ''
-          x.memory = []
-          break
-        default:
-          x.lastMove = 'empty action'
+          case '-':
+            x.value -= Number(x.memory.join(''))
+            x.action = ''
+            x.memory = []
+            break
+          case '/':
+            if (x.memory[0] === '0') {
+              x.lastMove = ' /0 not allowd'
+              x.memory = []
+              break
+            } else {
+              x.value /= Number(x.memory.join(''))
+              x.action = ''
+              x.memory = []
+              break
+            }
+          case '*':
+            x.value *= Number(x.memory.join(''))
+            x.action = ''
+            x.memory = []
+            break
+          default:
+            x.lastMove = 'empty action'
+        }
+      } else {
+        x.lastMove = 'Not a Number'
       }
     },
     setMemory: (state, action: PayloadAction<string>) => {
@@ -103,7 +108,9 @@ export const calculatorSlice = createSlice({
       const x = state
       const y = []
       const z = String(localStorage.getItem('value'))
-      for (let i = 0; i < z.length; i += 1) y.push(z[i])
+      for (let i = 0; i < z.length; i += 1) {
+        y.push(z[i])
+      }
       x.memory = y
     },
   },
