@@ -8,7 +8,7 @@ export interface CalculatorState {
   memory: string[]
   action: string
   lastMove: string
-  color: string | 'mediumspringgreen'
+  color: string
 }
 const initialState: CalculatorState = {
   value: 0,
@@ -16,7 +16,7 @@ const initialState: CalculatorState = {
   memory: [],
   lastMove: '',
   color: localStorage.getItem('color')
-  == null ? 'mediumspringgreen' : String(localStorage.getItem('color')),
+    ? String(localStorage.getItem('color')) : 'mediumspringgreen',
 }
 export const calculatorSlice = createSlice({
   name: 'calculator',
@@ -60,6 +60,7 @@ export const calculatorSlice = createSlice({
         }
       } else {
         x.lastMove = 'Not a Number'
+        x.memory = []
       }
     },
     setMemory: (state, action: PayloadAction<string>) => {
