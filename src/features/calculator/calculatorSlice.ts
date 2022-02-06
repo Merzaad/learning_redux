@@ -101,15 +101,10 @@ export const calculatorSlice = createSlice({
     },
     getStorage: (state) => {
       const x = state
-      if (x.memory.length > 0) x.value = Number(localStorage.getItem('value'))
-      else {
-        const y = []
-        const z = String(localStorage.getItem('value'))
-        for (let i = 0; i < z.length; i += 1) {
-          y.push(z[i])
-        }
-        x.memory = y
-      }
+      const y = []
+      const z = String(localStorage.getItem('value'))
+      for (let i = 0; i < z.length; i += 1) y.push(z[i])
+      x.memory = y
     },
   },
 })
