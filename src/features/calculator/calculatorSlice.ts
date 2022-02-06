@@ -59,7 +59,7 @@ export const calculatorSlice = createSlice({
     setMemory: (state, action: PayloadAction<string>) => {
       const x = state
       const y = action.payload
-      if (x.memory.length <= 20) x.memory.push(y)
+      if (x.memory.length < 20) x.memory.push(y)
     },
     setAction: (state, action: PayloadAction<string>) => {
       const x = state
@@ -84,6 +84,7 @@ export const calculatorSlice = createSlice({
     setColor: (state, action: PayloadAction<string>) => {
       const x = state
       x.color = action.payload
+      localStorage.setItem('color', action.payload)
     },
     floor: (state) => {
       const x = state
@@ -92,6 +93,23 @@ export const calculatorSlice = createSlice({
     backspace: (state) => {
       const x = state
       x.memory.pop()
+    },
+    setStorage: (state) => {
+      const x = state
+      if (x.memory.length > 0) localStorage.setItem('value', (x.memory.join('')))
+      else localStorage.setItem('value', String(x.value))
+    },
+    getStorage: (state) => {
+      const x = state
+      if (x.memory.length > 0) x.value = Number(localStorage.getItem('value'))
+      else {
+        const y = []
+        const z = String(localStorage.getItem('value'))
+        for (let i = 0; i < z.length; i += 1) {
+          y.push(z[i])
+        }
+        x.memory = y
+      }
     },
   },
 })
@@ -110,5 +128,7 @@ export const {
   setColor,
   floor,
   backspace,
+  setStorage,
+  getStorage,
 } = calculatorSlice.actions
 export default calculatorSlice.reducer

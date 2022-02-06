@@ -12,9 +12,10 @@ import {
   clearMemory,
   selectLastmove,
   setLastmove,
-  selectColor,
   floor,
   backspace,
+  setStorage,
+  getStorage,
 } from '../calculator/calculatorSlice'
 import { selectValue, selectMemory, selectAction } from './calculatorSlice'
 import './calculator.css'
@@ -24,7 +25,7 @@ function Calculator() {
   const value = useAppSelector(selectValue)
   const action = useAppSelector(selectAction)
   const lastMove = useAppSelector(selectLastmove)
-  const color = useAppSelector(selectColor)
+  const color = localStorage.getItem('color')
   const dispatch = useAppDispatch()
   const bugAction = (x: string) => {
     if (memory.length > 0 && action.length > 0) {
@@ -190,14 +191,14 @@ function Calculator() {
           <Button
             sx={{ color: `${color}` }}
             variant="text"
-            onClick={() => null}
+            onClick={() => dispatch(setStorage())}
           >
             m
           </Button>
           <Button
             sx={{ color: `${color}` }}
             variant="text"
-            onClick={() => null}
+            onClick={() => dispatch(getStorage())}
           >
             gm
           </Button>
