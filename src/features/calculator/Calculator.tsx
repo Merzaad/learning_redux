@@ -31,7 +31,7 @@ function Calculator() {
   const bugAction = (x: string) => {
     if (memory.length > 0 && action.length > 0) {
       dispatch(doAction(action))
-      dispatch(setAction(x))
+      dispatch(setAction(''))
       dispatch(clearMemory())
     } else if (!lastMove) {
       dispatch(doAction('+'))
