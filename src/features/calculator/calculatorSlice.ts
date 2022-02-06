@@ -62,6 +62,7 @@ export const calculatorSlice = createSlice({
         }
       } else {
         x.lastMove = 'Not a Number'
+        x.memory = []
       }
     },
     setMemory: (state, action: PayloadAction<string>) => {
