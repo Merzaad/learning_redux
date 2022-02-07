@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 
-import React, { useRef } from 'react'
+import React from 'react'
 import { Button, Container } from '@mui/material'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import {
@@ -21,12 +21,25 @@ import {
 import { selectValue, selectMemory, selectAction } from './calculatorSlice'
 import './calculator.css'
 
+function Key(props: any) {
+  const color = useAppSelector(selectColor)
+  const { act, text } = props
+  return (
+    <Button
+      sx={{ color: `${color}`, fontSize: '20px' }}
+      variant="text"
+      onClick={act}
+    >
+      {text}
+    </Button>
+  )
+}
+
 function Calculator() {
   const memory = useAppSelector(selectMemory)
   const value = useAppSelector(selectValue)
   const action = useAppSelector(selectAction)
   const lastMove = useAppSelector(selectLastmove)
-  const color = useAppSelector(selectColor)
   const dispatch = useAppDispatch()
   const bugAction = (x: string) => {
     if (memory.length > 0 && action.length > 0) {
@@ -47,10 +60,9 @@ function Calculator() {
       dispatch(setLastmove('bugAction else'))
     }
   }
-  const test: any = useRef('initial')
   return (
     <Container id="calculator">
-      <div ref={test} className="board">
+      <div className="board">
         <h6 style={{ height: '20px' }}>{lastMove}</h6>
         <hr />
         <h3 style={{ height: '20px' }}>{value}</h3>
@@ -59,173 +71,34 @@ function Calculator() {
       </div>
       <div>
         <div className="keyboard">
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(setMemory('1'))}
-          >
-            1
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            onClick={() => dispatch(setMemory('2'))}
-          >
-            2
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(setMemory('3'))}
-          >
-            3
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => bugAction('-')}
-          >
-            -
-          </Button>
+          <Key text="1" act={() => dispatch(setMemory('1'))} />
+          <Key text="2" act={() => dispatch(setMemory('2'))} />
+          <Key text="3" act={() => dispatch(setMemory('3'))} />
+          <Key text="-" act={() => bugAction('-')} />
         </div>
         <div className="keyboard">
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(setMemory('4'))}
-          >
-            4
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(setMemory('5'))}
-          >
-            5
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(setMemory('6'))}
-          >
-            6
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => bugAction('+')}
-          >
-            +
-          </Button>
+          <Key text="4" act={() => dispatch(setMemory('4'))} />
+          <Key text="5" act={() => dispatch(setMemory('5'))} />
+          <Key text="6" act={() => dispatch(setMemory('6'))} />
+          <Key text="+" act={() => bugAction('+')} />
         </div>
         <div className="keyboard">
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(setMemory('7'))}
-          >
-            7
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(setMemory('8'))}
-          >
-            8
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(setMemory('9'))}
-          >
-            9
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => bugAction('*')}
-          >
-            *
-          </Button>
+          <Key text="7" act={() => dispatch(setMemory('7'))} />
+          <Key text="8" act={() => dispatch(setMemory('8'))} />
+          <Key text="9" act={() => dispatch(setMemory('9'))} />
+          <Key text="*" act={() => bugAction('*')} />
         </div>
         <div className="keyboard">
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => bugAction('')}
-          >
-            =
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(setMemory('0'))}
-          >
-            0
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(clearBoard())}
-          >
-            C
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => bugAction('/')}
-          >
-            /
-          </Button>
+          <Key text="=" act={() => bugAction('')} />
+          <Key text=" 0" act={() => dispatch(setMemory('0'))} />
+          <Key text=" C" act={() => dispatch(clearBoard())} />
+          <Key text="/" act={() => bugAction('/')} />
         </div>
         <div className="keyboard">
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(backspace())}
-          >
-            DEL
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(floor())}
-          >
-            FLOOR
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(setStorage())}
-          >
-            m
-          </Button>
-          <Button
-            sx={{ color: `${color}`, fontSize: '20px' }}
-            variant="text"
-            size="large"
-            onClick={() => dispatch(getStorage())}
-          >
-            gm
-          </Button>
+          <Key text="DELL" act={() => dispatch(backspace())} />
+          <Key text=" FLOOR" act={() => dispatch(floor())} />
+          <Key text=" m" act={() => dispatch(setStorage())} />
+          <Key text="gm" act={() => dispatch(getStorage())} />
         </div>
       </div>
     </Container>
