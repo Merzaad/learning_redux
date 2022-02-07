@@ -95,10 +95,10 @@ function Calculator() {
           <Key text="/" act={() => bugAction('/')} />
         </div>
         <div className="keyboard">
-          <Key text="DELL" act={() => dispatch(backspace())} />
-          <Key text=" FLOOR" act={() => dispatch(floor())} />
-          <Key text=" m" act={() => dispatch(setStorage())} />
-          <Key text="gm" act={() => dispatch(getStorage())} />
+          <Key text="DEL" act={() => dispatch(backspace())} />
+          <Key text="FL" act={() => dispatch(floor())} />
+          <Key text="M" act={() => dispatch(setStorage())} />
+          <Key text="GM" act={() => dispatch(getStorage())} />
         </div>
       </div>
     </Container>

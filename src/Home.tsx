@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 function Home() {
   return (
     <Link id="home" to="/app">
-      <div className="home">CALACULATOR</div>
+      <div className="home">CALCULATOR</div>
     </Link>
   )
 }
