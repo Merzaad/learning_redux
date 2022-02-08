@@ -21,7 +21,7 @@ import {
 import { selectValue, selectMemory, selectAction } from './calculatorSlice'
 import './calculator.css'
 
-function Key(props: any) {
+function Key(props: { act: () => void; text: string }) {
   const color = useAppSelector(selectColor)
   const { act, text } = props
   return (

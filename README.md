@@ -1,4 +1,4 @@
-<img style="width:700px" src="https://i.postimg.cc/7LJnFQ2T/calculator.jpg">
+<img href="https://merzculator.herokuapp.com/" style="width:700px" src="https://i.postimg.cc/jq3Rm1mj/calculator.png">
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
