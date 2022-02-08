@@ -18,7 +18,6 @@
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
     "semi": [2, "never"],
-    "max-len": ["error", { "code": 80 }],
-    "linebreak-style": ["error", "windows"]
+    "max-len": ["error", { "code": 80 }]
   }
 }
