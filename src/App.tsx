@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import React from 'react'
+import * as React from 'react'
 
 import Calculator from './features/calculator/Calculator'
 
