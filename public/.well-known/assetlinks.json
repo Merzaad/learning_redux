@@ -1,0 +1,9 @@
+[
+{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { 
+    "namespace": "mculator",
+    "package_name": "app.vercel.mculator.twa",
+    "sha256_cert_fingerprints": ["2B:83:7A:E5:AF:38:C1:CA:26:0A:47:50:59:08:31:B1:FA:C4:22:5F:18:B2:5A:AC:45:C9:CD:87:1A:25:3D:87"] }
+}
+]
