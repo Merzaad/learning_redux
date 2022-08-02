@@ -10,7 +10,8 @@ body {
   text-shadow: 0px 0px 5px mediumspringgreen;
   border-radius: 10px;
   min-height: 150px;
-  margin: auto;
+  margin: 0;
+  min-width: 300px;
   margin-bottom: 10px;
   padding: 10px;
   overflow: hidden;
@@ -27,6 +28,10 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.411);
   padding: 20px;
   max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .calculatorSetting {
   background: rgb(0, 255, 142);
@@ -52,6 +57,9 @@ body {
 }
 
 @media screen and (max-width: 1000px) {
+  .board{
+    min-width: 270px;
+  }
   #calculator {
     height: 100vh;
     max-width: 100%;

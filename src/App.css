@@ -4,6 +4,7 @@
   background-image: url('../public/bg.jpg');
   background-repeat: repeat;
   background-size: 600px;
+  height: 100vh;
 }
 .App-header {
   min-height: 90vh;
