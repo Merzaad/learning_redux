@@ -10,7 +10,8 @@ import { store } from './app/store'
 import Nav from './Nav'
 import Home from './Home'
 import CalculatorSetting from './features/calculator/CalculatorSetting'
-import Test from './features/test/Test'
+import TestCapturingState from './features/testCapturingState/testCapturingState'
+import TestImmer from './features/testImmer/testImmer'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,7 +22,8 @@ ReactDOM.render(
             <Route index element={<Home />} />
             <Route path="/app" element={<App />} />
             <Route path="/setting" element={<CalculatorSetting />} />
-            <Route path="/test" element={<Test />} />
+            <Route path="/testCapturingState" element={<TestCapturingState />} />
+            <Route path="/testImmer" element={<TestImmer />} />
             <Route path="*" element={<div>404</div>} />
           </Route>
         </Routes>

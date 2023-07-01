@@ -2,15 +2,17 @@
 /* eslint-disable import/extensions */
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import calculatorReducer from '../features/calculator/calculatorSlice'
-import testReducer from '../features/test/testSlice'
-import { coinApi } from '../features/test/testApi'
+import testReducer from '../features/testCapturingState/testSlice'
+import testImmer from '../features/testImmer/testImmerSlice'
+/* import { coinApi } from '../features/testCapturingState/testApi' */
 
 export const store = configureStore({
   reducer: {
     calculator: calculatorReducer,
     test: testReducer,
+    testImmer,
   },
-/*  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(coinApi.middleware), */
+  /*  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(coinApi.middleware), */
 })
 
 export type AppDispatch = typeof store.dispatch

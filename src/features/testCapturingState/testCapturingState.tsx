@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { increaseTest, selectTest } from './testSlice'
 
 let testStale2 = 0
-export default function Test() {
+export default function TestCapturingState() {
   const dispatch = useDispatch()
   const testStale = useSelector(selectTest)
   const [testStale3, setTestStale3] = React.useState(0)
