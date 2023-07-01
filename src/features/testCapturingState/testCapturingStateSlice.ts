@@ -18,7 +18,7 @@ const initialState: testInitial = {
 }
 
 export const testSlice = createSlice({
-  name: 'test',
+  name: 'testCapturingState',
   initialState,
   reducers: {
     increaseTest: (state) => {
@@ -27,7 +27,7 @@ export const testSlice = createSlice({
   },
 })
 
-export const selectTest = (state: RootState) => state.test.testStale
+export const selectTest = (state: RootState) => state.testCapturingState.testStale
 
 export const { increaseTest } = testSlice.actions
 

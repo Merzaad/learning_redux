@@ -31,8 +31,6 @@ export const testSlice = createSlice({
   },
 })
 
-export const selectTest = (state: RootState) => state.test.testStale
-
 export const { setImmerTest, testImmerTest, printImmerTest } = testSlice.actions
 
 export default testSlice.reducer
