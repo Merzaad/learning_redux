@@ -16,6 +16,7 @@ export default function TestCapturingState() {
   const [y, setY] = React.useState(false)
   const [z, setZ] = React.useState(false)
   const [q, setQ] = React.useState(false)
+  const test = () => console.log(testStale2)
   const promise = () =>
     // eslint-disable-next-line implicit-arrow-linebreak
     new Promise((resolve) => {
@@ -37,13 +38,21 @@ export default function TestCapturingState() {
       setTimeout(() => resolve(testStale4.current), 1500)
     })
   React.useEffect(() => {
-    promise().then((r) => console.log(r))
+    promise().then((r) => {
+      console.log(r)
+      test()
+    })
   }, [x])
   React.useEffect(() => {
-    promise2().then((r) => console.log(r))
+    promise2().then((r) => {
+      console.log(r)
+      test()
+    })
   }, [y])
   React.useEffect(() => {
-    promise3().then((r) => console.log(r))
+    promise3().then((r) => {
+      console.log(r)
+    })
   }, [z])
   React.useEffect(() => {
     promise4().then((r) => console.log(r))
